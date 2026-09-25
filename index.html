@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Principal</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/utileria.js"></script>
+</head>
+<body>
+    <h1>Registro de Usuario</h1>
+    
+    <label>Nombre Completo (solo letras):</label>
+    <input type="text" id="nombre">
+    <br><br>
+
+    <label>Teléfono (máx 10 dígitos):</label>
+    <input type="number" id="telefono">
+    <br><br>
+
+    <label>Fecha de Nacimiento:</label>
+    <input type="date" id="fecha_nacimiento">
+    <br><br>
+
+    <button onclick="procesarFormulario()">Verificar y Calcular Edad</button>
+
+    <div id="miModal" class="modal">
+        <div class="modal-contenido">
+            <h2>Resultado</h2>
+            <p id="mensajeModal"></p>
+            <br>
+            <button onclick="cerrarModal()">Cerrar</button>
+        </div>
+    </div>
+
+    <script>
+        function procesarFormulario() {
+            var nombre = document.getElementById("nombre").value;
+            var telefono = document.getElementById("telefono").value;
+            var fechaNac = document.getElementById("fecha_nacimiento").value;
+
+            // Uso de función libre para limpiar espacios
+            nombre = limpiarEspacios(nombre);
+
+            if (!soloLetras(nombre)) {
+                alert("Error: El nombre solo debe contener letras.");
+                return;
+            }
+
+            if (!validarLongitud(telefono, 10)) {
+                alert("Error: El teléfono no puede tener más de 10 dígitos.");
+                return;
+            }
+
+            if (fechaNac === "") {
+                alert("Por favor selecciona una fecha.");
+                return;
+            }
+
+            var edad = calcularEdad(fechaNac);
+            var esMayor = esMayorDeEdad(fechaNac);
+            var mensaje = "Tienes " + edad + " años. ";
+            
+            if (esMayor) {
+                mensaje += "Eres mayor de edad.";
+            } else {
+                mensaje += "Eres menor de edad.";
+            }
+
+            document.getElementById("mensajeModal").innerHTML = mensaje;
+            document.getElementById("miModal").style.display = "block";
+        }
+
+        function cerrarModal() {
+            document.getElementById("miModal").style.display = "none";
+        }
+    </script>
+</body>
+</html>

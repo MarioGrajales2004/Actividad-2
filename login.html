@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <script src="js/utileria.js"></script>
+</head>
+<body>
+    <h1>Iniciar Sesión</h1>
+    
+    <label>Correo Electrónico:</label>
+    <input type="text" id="correo">
+    <br><br>
+
+    <label>Contraseña:</label>
+    <input type="password" id="password">
+    <br><br>
+
+    <button onclick="intentarLogin()">Ingresar</button>
+    <p id="resultadoLogin"></p>
+
+    <script>
+        function intentarLogin() {
+            var correo = document.getElementById("correo").value;
+            var password = document.getElementById("password").value;
+            var resultado = document.getElementById("resultadoLogin");
+
+            if (!validarCorreo(correo)) {
+                resultado.innerHTML = "Formato de correo inválido.";
+                resultado.style.color = "red";
+                return;
+            }
+
+            if (!validarPassword(password)) {
+                resultado.innerHTML = "La contraseña debe tener 8 caracteres, mayúscula, minúscula, número y un carácter especial.";
+                resultado.style.color = "red";
+                return;
+            }
+
+            resultado.innerHTML = "¡Login exitoso! Datos correctos.";
+            resultado.style.color = "green";
+        }
+    </script>
+</body>
+</html>
