@@ -18,18 +18,16 @@ function calcularEdad(fechaNacimiento) {
     var hoy = new Date();
     var edad = hoy.getFullYear() - fechaNac.getFullYear();
     var mes = hoy.getMonth() - fechaNac.getMonth();
-    
+   
     if (mes < 0 || (mes === 0 && hoy.getDate() < fechaNac.getDate())) {
         edad--;
     }
     return edad;
 }
-
 function esMayorDeEdad(fechaNacimiento) {
     var edad = calcularEdad(fechaNacimiento);
     return edad >= 18;
 }
-
 function validarPassword(password) {
     var tieneMayuscula = /[A-Z]/.test(password);
     var tieneMinuscula = /[a-z]/.test(password);
@@ -38,7 +36,6 @@ function validarPassword(password) {
     
     return password.length >= 8 && tieneMayuscula && tieneMinuscula && tieneNumero && tieneEspecial;
 }
-
 function limpiarEspacios(texto) {
     return texto.trim();
 }

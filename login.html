@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión</title>
-    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/styles.css">
     <script src="js/utileria.js"></script>
 </head>
 <body>
@@ -19,6 +19,9 @@
     <br><br>
 
     <button onclick="intentarLogin()">Ingresar</button>
+    <br><br>
+    <button onclick="window.location.href='index.html'">Regresar al Formulario</button>
+    
     <p id="resultadoLogin"></p>
 
     <script>
@@ -34,7 +37,7 @@
             }
 
             if (!validarPassword(password)) {
-                resultado.innerHTML = "La contraseña debe tener 8 caracteres, mayúscula, minúscula, número y un carácter especial.";
+                resultado.innerHTML = "La contraseña debe tener mínimo 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial.";
                 resultado.style.color = "red";
                 return;
             }

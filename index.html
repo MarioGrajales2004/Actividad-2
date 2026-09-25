@@ -23,6 +23,8 @@
     <br><br>
 
     <button onclick="procesarFormulario()">Verificar y Calcular Edad</button>
+    <br><br>
+    <button onclick="window.location.href='login.html'">Ir a Iniciar Sesión</button>
 
     <div id="miModal" class="modal">
         <div class="modal-contenido">
@@ -39,7 +41,6 @@
             var telefono = document.getElementById("telefono").value;
             var fechaNac = document.getElementById("fecha_nacimiento").value;
 
-            // Uso de función libre para limpiar espacios
             nombre = limpiarEspacios(nombre);
 
             if (!soloLetras(nombre)) {
